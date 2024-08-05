@@ -531,6 +531,7 @@ jobs:
       - run-build-step:
           step-name: Runs gradle test task << parameters.gradle-task >>
           command: |
+            circleci tests glob "functional-test/src/test/groovy/**/*Spec.groovy" | xargs -n 1 echo
             TEST_IMAGE=<< parameters.test-image >>
             GRADLE_TASK=<< parameters.gradle-task >>
             rundeck_gradle_functional_tests
